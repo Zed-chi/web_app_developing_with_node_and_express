@@ -1,0 +1,29 @@
+{
+  "name": "web_apps_with_node_express",
+  "version": "0.0.1",
+  "description": "app from book",
+  "main": "meadowlark.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon meadowlark.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zed-chi/web_app_developing_with_node_and_express.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "zed-chi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zed-chi/web_app_developing_with_node_and_express/issues"
+  },
+  "homepage": "https://github.com/Zed-chi/web_app_developing_with_node_and_express#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "nodemon": "^1.19.1"
+  }
+}
