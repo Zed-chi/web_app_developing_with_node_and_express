@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
-const handlebars = require("express-handlebars").create({defaultLayout:"main"});
+const port = process.env.PORT || 4000;
 
 
-app.engine("handlebars",handlebars.engine);
-app.set("view engine", handlebars);
+const handlebars = require("express-handlebars");
+app.engine('handlebars', handlebars());
+app.set('view engine', 'handlebars');
 
 app.get("/", (req,res)=>{
     res.render("home");
@@ -17,7 +17,7 @@ app.get("/about", (req,res)=>{
 
 
 app.use((err, req, res,next)=>{
-    res.status(404);
+    res.status(404); 
     res.render("404");
 });
 
