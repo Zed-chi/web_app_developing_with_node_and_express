@@ -5,4 +5,18 @@
     Name: <input type="text" id="fieldName" name="name">
     <br>
     Group Size: <input type="text">
+    <br>
+    email: <input type="email" name="email">
+    <br>
+    <button type="submit">
+        submit
+    </button>
 </form>
+
+{{#section "jquery"}}
+    <script>
+        $(document).ready(()=>{
+            $(input[name="referrer"]).val(document.referrer);
+        });
+    </script>
+{{/section}}
