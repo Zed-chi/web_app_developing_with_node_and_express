@@ -4,7 +4,9 @@ const port = process.env.PORT || 4000;
 
 
 const handlebars = require("express-handlebars");
+handlebars.create({defaultLayout:"main"});
 app.engine('handlebars', handlebars());
+
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + "/public"));
 
@@ -14,15 +16,31 @@ app.use((req, res, next)=>{
     next();
 });
 
+app.use((req,res,next)=>{
+    if(!res.locals.partials){res.locals.partials = {};}
+    res.locals.partials.weatherContext = getWeatherData();
+});
+
+
 /* routes */
 app.get("/", (req,res)=>{
     res.render("home");
 });
 
 app.get("/about", (req,res)=>{
-    res.render("about")
+    res.render("about",{
+        fortune:getFortune(),
+        pageTestScript:"/qa/tests-about.js"
+    });
 });
 
+app.get("/tours/hood-river", (req, res)=>{
+    res.render("tours/request-group-river");
+});
+
+app.get("/tours/request-group-rate", (req, res)=>{
+    res.render("tours/hood-river");
+});
 
 app.use((err, req, res,next)=>{
     res.status(404); 
@@ -38,3 +56,18 @@ app.use((err, req, res,next)=>{
 app.listen(port, ()=>{
     console.log(`serverok startanul na ${port} porte`);
 });
+
+
+/*
+functions
+*/
+
+const getWeatherData = ()=>{
+    return {
+        locations:[
+            {name:"PortLand1", forecastUrl:"someurl",iconUrl:"someUrl", weather:"Cloudy", temp:"12.3C"},
+            {name:"PortLand2", forecastUrl:"someurl",iconUrl:"someUrl", weather:"Cloudy", temp:"12.3C"},
+            {name:"PortLand3", forecastUrl:"someurl",iconUrl:"someUrl", weather:"Cloudy", temp:"12.3C"},
+        ]
+    };
+};
