@@ -4,7 +4,18 @@ const port = process.env.PORT || 4000;
 
 
 const handlebars = require("express-handlebars");
-handlebars.create({defaultLayout:"main"});
+handlebars.create(
+    {
+        defaultLayout:"main",
+        helpers:{
+            section: (name, options)=>{
+                if(!this._sections) {this._section = {};}
+                this._sections[name] = options.fn(this);
+                return null;
+            },
+        }
+    }
+);
 app.engine('handlebars', handlebars());
 
 app.set('view engine', 'handlebars');
@@ -19,6 +30,7 @@ app.use((req, res, next)=>{
 app.use((req,res,next)=>{
     if(!res.locals.partials){res.locals.partials = {};}
     res.locals.partials.weatherContext = getWeatherData();
+    next();
 });
 
 

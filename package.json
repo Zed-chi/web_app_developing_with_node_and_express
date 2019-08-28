@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Zed-chi/web_app_developing_with_node_and_express#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "handlebars": "^4.1.2",
@@ -31,7 +32,6 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "grunt": "^1.0.4",
-    "grunt-cafe-mocha": "^0.1.13",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-exec": "^3.0.0",
     "grunt-mocha-test": "^0.13.3",

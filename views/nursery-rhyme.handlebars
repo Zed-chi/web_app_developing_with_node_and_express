@@ -1,0 +1,13 @@
+{{#section "head"}}
+<script src="../public/vendor/handlebars.min.js"></script>
+<scriptid="nurseryRhymeTemplate" type="text/x-handlebars-template">
+    Mary has a small <b>\{{animal}}</b>
+    his <b>/{{bodyPart}}</b> was <b>\{{adjective}}</b>, like <b>\{{noun}}</b>
+</script>
+{{/section}}
+
+{{#section "jquery"}}
+$(document).ready(()=>{
+    const nurseryRhhymeTemplate = Handlebars.Compile($("#nurseryRhymeTemplate").html());
+});
+{{/section}}
